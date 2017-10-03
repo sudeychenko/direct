@@ -1,0 +1,16 @@
+.result table{
+    border-collapse: collapse;
+    border: 1px solid #000;
+}
+.result table tr:first-child{
+    border-bottom: 1px solid #000000;
+}
+.result table tr:nth-child(odd){
+    background: #eee;
+}
+.result table tr:hover{
+    background: #ddd;
+}
+.result table tr td{
+    padding: 5px 15px;
+}
