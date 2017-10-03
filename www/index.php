@@ -1,7 +1,5 @@
 <?php
-
 include_once "functions.php";
-
 
 $post = '{
 "params": {
@@ -20,11 +18,13 @@ $post = '{
       "IncludeDiscount": "YES"
     }
 }';
+$result = sendQuery($post, '/reports', array(
+        "returnMoneyInMicros" => 'false'
+    )
+);
 
-$result = sendQuery($post, '/reports', array("returnMoneyInMicros" => 'false'));
-//$result = json_decode($result);
 $data = tsv_to_array($result['result']);
-//  $result['result'];
+
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +38,15 @@ $data = tsv_to_array($result['result']);
 <h1>Hello Direct</h1>
 <div class="result">
     <?php
+
     if($result['http_code']!== 200){
         echo "<pre>";
         print_r(json_decode($result['result']));
         echo "</pre>";
+        echo "<pre>";
+        print_r($result['info']);
+        echo "</pre>";
+
     }else{
     ?>
     <table>

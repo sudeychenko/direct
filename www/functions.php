@@ -1,14 +1,13 @@
 <?php
-
+$ini = parse_ini_file('config.ini');
+// отправка запроса $query на сервер. Возвращает массив.
 function sendQuery($query, $services, $opt_header=null){
     if (!$query) {return false;}
     $ini = parse_ini_file('config.ini');
     // обязателдьные заголовки
     $headers =  array('Expect:',
         'Authorization: Bearer '.$ini['token'],
-        'Content-Type:application/json',
-        'Client-Login:' . $ini['login'],
-        'Accept-Language:' . $ini['lang'],
+        'Content-Type:application/json'
      );
     // Пользовательские заголовки
     if($opt_header){
